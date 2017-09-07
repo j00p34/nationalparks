@@ -17,7 +17,6 @@ def repoUrl=""                   // the URL of this project's repository
 
 // uniqueName returns a name with a 16-character random character suffix
 def uniqueName = { String prefix ->
- 
   return prefix + env.BRANCH_NAME
 }
 
