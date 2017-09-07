@@ -17,9 +17,8 @@ def repoUrl=""                   // the URL of this project's repository
 
 // uniqueName returns a name with a 16-character random character suffix
 def uniqueName = { String prefix ->
-  sh "cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1 > suffix"
-  suffix = readFile("suffix").trim()
-  return prefix + suffix
+ 
+  return prefix + env.BRANCH_NAME
 }
 
 // setBuildStatus sets a status item on a GitHub commit
