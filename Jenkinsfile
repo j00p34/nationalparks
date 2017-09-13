@@ -75,7 +75,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
         openshift.newProject( 'nationalparks-blabla' )
         openshift.withProject( 'nationalparks-blabla' ) {
           openshift.create('serviceaccount', 'jenkins')
-          openshift.policy('add-role-to-user','view','jenkins')
+          openshift.policy('add-role-to-user','view','z','jenkins')
         }
        // openshift.create( "namespace", "dirk" )
        // sh "oc new-project ${project}"
