@@ -16,8 +16,16 @@ def projectCreated=false         // true if a project was created by this build 
 def repoUrl=""                   // the URL of this project's repository
 
 // uniqueName returns a name with a 16-character random character suffix
+
+def generator = { String alphabet, int n ->
+  new Random().with {
+    (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+  }
+}
+
+
 def uniqueName = { String prefix ->
-  return prefix + "blabla"
+  return prefix + generator( (('a'..'z')+('0'..'9')).join(), 16 )
 }
 
 // setBuildStatus sets a status item on a GitHub commit
