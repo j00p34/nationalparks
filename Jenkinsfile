@@ -71,7 +71,8 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
         setBuildStatus(repoUrl, "ci/app-preview", "Building application", "PENDING", "")
         setBuildStatus(repoUrl, "ci/approve", "Aprove after testing", "PENDING", "") 
         project = uniqueName("${appName}-")
-        openshift.create( "namespace", "dirk" )
+        openshift.newProject( 'my-new-project' )
+       // openshift.create( "namespace", "dirk" )
        // sh "oc new-project ${project}"
         projectCreated=true
         sh "oc create serviceaccount jenkins -n ${project}"
