@@ -80,6 +80,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
         setBuildStatus(repoUrl, "ci/approve", "Aprove after testing", "PENDING", "") 
         project = uniqueName("${appName}-")
         openshift.doAs( 'my-openshift-token' ) {
+          echo "Creating new PR project: ${project}"
           openshift.newProject( "${project}" )
           openshift.withProject( "${project}" ) {
               openshift.create('serviceaccount', 'jenkins')
