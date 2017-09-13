@@ -65,7 +65,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
 
     // When testing a PR, create a new project to perform the build 
     // and deploy artifacts.
-    openshift.withCluster( 'mycluster' ) {
+    openshift.doAs( 'myclusterid' ) {
     if (isPR) {
       stage ('Create PR Project') {
         setBuildStatus(repoUrl, "ci/app-preview", "Building application", "PENDING", "")
