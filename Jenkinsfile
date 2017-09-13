@@ -25,7 +25,7 @@ def generator = { String alphabet, int n ->
 
 
 def uniqueName = { String prefix ->
-  return prefix + generator( 'abcdefghijklmnopqrstuvwxyz', 16 )
+  return prefix + generator( (('a'..'z')+('0'..'9')).join(""), 16 )
 }
 
 // setBuildStatus sets a status item on a GitHub commit
