@@ -81,7 +81,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
        // sh "oc new-project ${project}"
         projectCreated=true
         //sh "oc create serviceaccount jenkins -n ${project}"
-        sh "oc policy add-role-to-user view -z jenkins -n ${project}"
+        //sh "oc policy add-role-to-user view -z jenkins -n ${project}"
         sh "oc policy add-role-to-group view system:authenticated -n ${project}"
         }
       }
