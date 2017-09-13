@@ -79,6 +79,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
         setBuildStatus(repoUrl, "ci/app-preview", "Building application", "PENDING", "")
         setBuildStatus(repoUrl, "ci/approve", "Aprove after testing", "PENDING", "") 
         project = uniqueName("${appName}-")
+        echo "Using my-openshift-token for administrative actions"
         openshift.doAs( 'my-openshift-token' ) {
           echo "Create new project for PR using generated name: ${project}"
           openshift.newProject( "${project}" )
@@ -91,11 +92,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
               echo "Allow view for all authenicated users"
               openshift.policy('add-role-to-group','view','system:authenticated')
             }
-       // openshift.create( "namespace", "dirk" )
-       // sh "oc new-project ${project}"
         projectCreated=true
-        //sh "oc create serviceaccount jenkins -n ${project}"
-        //sh "oc policy add-role-to-user view -z jenkins -n ${project}"
         }
       }
     }
