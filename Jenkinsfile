@@ -80,11 +80,15 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
         setBuildStatus(repoUrl, "ci/approve", "Aprove after testing", "PENDING", "") 
         project = uniqueName("${appName}-")
         openshift.doAs( 'my-openshift-token' ) {
-          echo "Creating new PR project: ${project}"
+          echo "Create new project for PR using generated name: ${project}"
           openshift.newProject( "${project}" )
+          echo "switch to project: ${project}"
           openshift.withProject( "${project}" ) {
+              echo "Create jenkins serviceaccount in new project"
               openshift.create('serviceaccount', 'jenkins')
+              echo "Add view role to jenkins serviceaccount in new project"
               openshift.policy('add-role-to-user','view','z','jenkins')
+              echo "Allow view for all authenicated users"
               openshift.policy('add-role-to-group','view','system:authenticated')
             }
        // openshift.create( "namespace", "dirk" )
