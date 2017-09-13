@@ -18,8 +18,8 @@ def repoUrl=""                   // the URL of this project's repository
 // uniqueName returns a name with a 16-character random character suffix
 
 def generator = { String alphabet, int n ->
-  new Random().with {
-    (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+  new Random().with { r ->
+    (1..n).collect { alphabet[ r.nextInt( alphabet.length() ) ] }.join()
   }
 }
 
