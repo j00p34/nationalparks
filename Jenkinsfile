@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 
+//debug output
+openshift.verbose(true)
 // Application-specific Values
 def mavenArgs="-Dcom.redhat.xpaas.repo.redhatga"     // Global maven arguments
 def mavenPackageArgs="package spring-boot:repackage" // Maven package arguments
