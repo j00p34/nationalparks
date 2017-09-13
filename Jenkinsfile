@@ -72,7 +72,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
         setBuildStatus(repoUrl, "ci/approve", "Aprove after testing", "PENDING", "") 
         project = uniqueName("${appName}-")
         openshift.doAs( 'my-openshift-token' ) {
-        openshift.newProject(  ${project} )
+        openshift.newProject( 'nationalparks-blabla' )
         }
        // openshift.create( "namespace", "dirk" )
        // sh "oc new-project ${project}"
