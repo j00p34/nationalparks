@@ -19,7 +19,7 @@ def repoUrl=""                   // the URL of this project's repository
 
 def generator = { String alphabet, int n ->
   new Random().with { r ->
-    (1..n).collect { alphabet[ r.nextInt( alphabet.length() ) ] }.join()
+    (1..n).collect { alphabet[ r.nextInt( alphabet.length() ) ] }.join("")
   }
 }
 
