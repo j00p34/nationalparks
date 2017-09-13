@@ -65,6 +65,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
 
     // When testing a PR, create a new project to perform the build 
     // and deploy artifacts.
+    openshift.withCluster( 'mycluster' ) {
     if (isPR) {
       stage ('Create PR Project') {
         setBuildStatus(repoUrl, "ci/app-preview", "Building application", "PENDING", "")
@@ -77,7 +78,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
         sh "oc policy add-role-to-group view system:authenticated -n ${project}"
       }
     }
-
+    }
     stage ('Build') {
       sh "mvn clean compile ${mavenArgs}"
     }
