@@ -73,11 +73,13 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
         project = uniqueName("${appName}-")
         openshift.doAs( 'my-openshift-token' ) {
         openshift.newProject( 'nationalparks-blabla' )
+        openshift.withProject( 'nationalparks-blabla' ) {
+          openshift.create('serviceaccount', 'jenkins')
         
        // openshift.create( "namespace", "dirk" )
        // sh "oc new-project ${project}"
         projectCreated=true
-        sh "oc create serviceaccount jenkins -n ${project}"
+        //sh "oc create serviceaccount jenkins -n ${project}"
         sh "oc policy add-role-to-user view -z jenkins -n ${project}"
         sh "oc policy add-role-to-group view system:authenticated -n ${project}"
         }
