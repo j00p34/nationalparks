@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-@Library('github.com/fabric8io/fabric8-pipeline-library@master') _
+@Library('github.com/fabric8io/fabric8-pipeline-library@master')
 
 //debug output
 openshift.verbose(true)
