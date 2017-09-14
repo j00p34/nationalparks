@@ -1,7 +1,5 @@
 #!/usr/bin/env groovy
 
-@Library('github.com/fabric8io/fabric8-pipeline-library@master')
-
 //debug output
 openshift.verbose(true)
 // Application-specific Values
@@ -151,7 +149,7 @@ try { // Use a try block to perform cleanup in a finally block when the build fa
       }
       setBuildStatus(repoUrl, "ci/app-preview", "Application previewed", "SUCCESS", "")
       setBuildStatus(repoUrl, "ci/approve", "Manually approved", "SUCCESS", "")
-      mergePR(baseProject, id)
+
     }
   }
 } 
