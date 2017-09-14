@@ -1,5 +1,10 @@
 #!/usr/bin/env groovy
 
+@Library('github.com/fabric8io/fabric8-pipeline-library@master') _
+
+mergePR(project, id)
+
+
 //debug output
 openshift.verbose(true)
 // Application-specific Values
